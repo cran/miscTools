@@ -1,0 +1,15 @@
+coefTable               Coefficient Table
+colMedians              Medians of Columns and Rows
+compPlot                Scatterplot to Compare two Variables
+insertCol               Insert Column into a Matrix
+insertRow               Insert Row into a Matrix
+quasiconcavity          Test for quasiconcavity / quasiconvexity
+rSquared                Calculate R squared value
+semidefiniteness        Positive or Negative Semidefiniteness
+symMatrix               Symmetric Matrix
+triang                  Upper triangular matrix from a vector
+vecli                   Vector of linear independent values
+vecli2m                 Convert vector of linear independent values
+                        into a Matrix
+veclipos                Position in a vector of linear independent
+                        values
