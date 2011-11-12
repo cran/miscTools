@@ -18,15 +18,8 @@ Type 'q()' to quit R.
 
 > library( "miscTools" )
 > 
-> a <- 1:10
-> attr( a, "min" ) <- 1
-> attr( a, "max" ) <- 10
-> sum(a)
-[1] 55
-> sumKeepAttr(a)
-[1] 55
-attr(,"min")
-[1] 1
-attr(,"max")
-[1] 10
+> try( margEff( 123 ) )
+Error in margEff.default(123) : 
+  there is currently no default method available
+> 
 > 
