@@ -22,11 +22,27 @@ compPlot <- function( x, y, lim = NULL, ... ) {
          warning( "some data points are outside the print area" )
       }
    }
+   
+   # code taken from plot.default()
+   xlabel <- deparse(substitute(x))
+   ylabel <- deparse(substitute(y))
 
-   plot( x, y, xlim = lim, ylim = lim, ... )
+   argList <- list( ... )
+   
+   argList$x <- x
+   argList$y <- y
+   argList$xlim <- lim
+   argList$ylim <- lim
+   if( ! "xlab" %in% names (argList) ) {
+      argList$xlab <- xlabel 
+   }
+   if( ! "ylab" %in% names (argList) ) {
+      argList$ylab <- ylabel 
+   }
+   
+   do.call( plot.default, argList )
 
-   lines( 1.5 * lim - 0.5 * lim[c(2,1)],
-      1.5 * lim - 0.5 * lim[c(2,1)] )
+   abline( 0, 1 )
 
    invisible( xyRange )
 }
