@@ -1,15 +1,17 @@
-## ----- test positive / negative semidefiniteness
-semidefiniteness <- function( m, positive = TRUE,
-   tol = 100 * .Machine$double.eps, method = "det" ) {
+isSemidefinite <- function( m, ... )
+   UseMethod( "isSemidefinite" )
 
-   if( is.list( m ) ) {
-      result <- logical( length( m ) )
-      for( t in 1:length( m ) ) {
-         result[ t ] <- semidefiniteness( m[[ t ]], positive = positive,
-            tol = tol, method = method )
-      }
-   } else if( !is.matrix( m ) ) {
-      stop( "argument 'm' must be a matrix or a list of matrices" )
+isSemidefinite.default <- function( m, ... ) {
+   stop( "there is currently no default method available" )
+}
+
+## ----- test positive / negative semidefiniteness
+isSemidefinite.matrix <- function( m, positive = TRUE,
+   tol = 100 * .Machine$double.eps,
+   method = ifelse( nrow( m ) < 13, "det", "eigen" ), ... ) {
+
+   if( !is.matrix( m ) ) {
+      stop( "argument 'm' must be a matrix" )
    } else {
       if( nrow( m ) != ncol( m ) ) {
          stop( "argument 'm' or each of its elements must be a _quadratic_ matrix" )
@@ -23,8 +25,13 @@ semidefiniteness <- function( m, positive = TRUE,
       if( !positive ) {
          m <- -m
       }
+      if( n >= 12 && method == "det" ) {
+         warning( "using method 'det' can take a very long time",
+            " for matrices with more than 12 rows and columns;",
+            " it is suggested to use method 'eigen' for larger matrices",
+            immediate. = TRUE )
+      }
       if( method == "det" ) {
-         result <- TRUE
          for( i in 1:n ) {
             comb <- combn( n, i )
             for( j in 1:ncol( comb ) ) {
@@ -34,9 +41,12 @@ semidefiniteness <- function( m, positive = TRUE,
                } else {
                   princMin <- 0
                }
-               result <- result && ( princMin >= -tol )
+               if( princMin < -tol ) {
+                  return( FALSE )
+               }
             }
          }
+         return( TRUE )
       } else if( method == "eigen" ) {
          if( rcond( m ) >= tol || n == 1 ) {
             ev <- eigen( m, only.values = TRUE )$values
@@ -44,25 +54,42 @@ semidefiniteness <- function( m, positive = TRUE,
                stop( "complex (non-real) eigenvalues,",
                   " which could be caused by a non-symmetric matrix" )
             }
-            result <- min( ev ) > -tol
+            return( min( ev ) > -tol )
          } else {
-            result <- TRUE
             for( i in 1:n ) {
                mm <- m[ -i, -i, drop = FALSE ]
-               result <- result &
-                  semidefiniteness( mm, tol = tol, method = method  )
+               if( !semidefiniteness( mm, tol = tol, method = method  ) ) {
+                  return( FALSE )
+               }
             }
+            return( TRUE )
          }
       } else {
          stop( "argument 'method' must be either 'det' or 'eigen'" )
       }
    }
+   stop( "internal error: please inform the maintainer",
+      " of the 'miscTools' package",
+      " (preferably with a reproducible example)" )
+}
+
+isSemidefinite.list <- function( m, ... ) {
+   
+   if( !is.list( m ) ) {
+      stop( "argument 'm' must be a matrix or a list of matrices" )
+   } else if( !all( sapply( m, is.matrix ) ) ) {
+      stop( "all components of the list specified by argument 'm'",
+         " must be matrices" )
+   }
+      
+   result <- logical( length( m ) )
+   for( t in 1:length( m ) ) {
+      result[ t ] <- isSemidefinite( m[[ t ]], ... )
+   }
    return( result )
 }
 
-isSemidefinite <- function( m, positive = TRUE,
-   tol = 100 * .Machine$double.eps, method = "det" ) {
-   result <- semidefiniteness( m = m, positive = positive,
-      tol = tol, method = method )
+semidefiniteness <- function( m, ... ) {
+   result <- isSemidefinite( m = m, ... )
    return( result )
 }

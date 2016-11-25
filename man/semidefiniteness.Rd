@@ -1,5 +1,8 @@
 \name{isSemidefinite}
 \alias{isSemidefinite}
+\alias{isSemidefinite.default}
+\alias{isSemidefinite.list}
+\alias{isSemidefinite.matrix}
 \alias{semidefiniteness}
 \title{Positive or Negative Semidefiniteness}
 
@@ -8,11 +11,17 @@
 }
 
 \usage{
-isSemidefinite( m, positive = TRUE,
-   tol = 100 * .Machine$double.eps, method = "det" )
+isSemidefinite( m, \dots )
 
-semidefiniteness( m, positive = TRUE,
-   tol = 100 * .Machine$double.eps, method = "det" )
+\method{isSemidefinite}{default}( m, \dots )
+
+\method{isSemidefinite}{matrix}( m, positive = TRUE,
+   tol = 100 * .Machine$double.eps,
+   method = ifelse( nrow( m ) < 13, "det", "eigen" ), \dots )
+
+\method{isSemidefinite}{list}( m, \dots )
+
+semidefiniteness( m, \dots )
 }
 
 \arguments{
@@ -24,23 +33,30 @@ semidefiniteness( m, positive = TRUE,
    \item{tol}{tolerance level (values between \code{-tol} and \code{tol}
       are considered to be zero).}
    \item{method}{method to test for semidefiniteness, either
-      checking the signs of the principal minors (if \code{"det"})
-      or checking the signs of the eigenvalues (if \code{"eigen"}).}
+      checking the signs of the principal minors
+      (if \code{"det"}, default for matrices with up to 12 rows/columns)
+      or checking the signs of the eigenvalues
+      (if \code{"eigen"}, default for matrices with 13 or more rows/columns).}
+   \item{\dots}{further arguments of \code{isSemidefinite.list}
+      are passed to \code{isSemidefinite.matrix};.
+      further arguments of \code{semidefiniteness}
+      are passed to \code{isSemidefinite};
+      further arguments of other functions are currently ignored.}
 }
 
 \details{
-   Functions \code{isSemidefinite()} and \code{semidefiniteness()}
-   are identical
-   Function \code{semidefiniteness()} may be depreciated in the future,
-   because the name of function \code{isSemidefinite()}
-   seems to be more consistent to the names of other functions in R.
+   Function \code{semidefiniteness()} passes all its arguments
+   to \code{isSemidefinite()}.
+   It is only kept for backward-compatibility
+   and may be removed in the future.
 
    If argument \code{positive} is set to \code{FALSE},
    \code{isSemidefinite()} checks for negative semidefiniteness
    by checking for positive semidefiniteness
    of the negative of argument \code{m}, i.e. \code{-m}.
 
-   If method \code{"det"} is used (the default),
+   If method \code{"det"} is used
+   (default for matrices with up to 12 rows/columns),
    \code{isSemidefinite()} checks whether all principal minors
    (not only the leading principal minors)
    of the matrix \code{m}
@@ -57,8 +73,14 @@ semidefiniteness( m, positive = TRUE,
    of (sub-)matrices with reciprocal condition numbers
    smaller than argument \code{tol}
    but sets the corresponding principal minors to (exactly) zero.
+   The number of principal minors of an \eqn{N \times N}{N x N} matrix is
+   \eqn{\sum_{k=1}^N ( N} choose \eqn{ k )},
+   which gets very large for large matrices.
+   Therefore, it is not recommended to use method \code{"det"}
+   for matrices with, say, more than 12 rows/columns.
 
-   If method \code{"eigen"} is used,
+   If method \code{"eigen"}
+   (default for matrices with 13 or more rows/columns) is used,
    \code{isSemidefinite()} checks whether all eigenvalues
    of the matrix \code{m}
    (or of the matrix \code{-m} if argument \code{positive} is \code{FALSE})
@@ -71,10 +93,11 @@ semidefiniteness( m, positive = TRUE,
    In order to reduce the probability of incorrect results
    due to rounding errors,
    \code{isSemidefinite()} does not calculate the eigenvalues
-   of an NxN matrix with reciprocal condition number
+   of an \eqn{N \times N}{NxN} matrix with reciprocal condition number
    smaller than argument \code{tol}
-   but checks whether all N (N-1)x(N-1) submatrices
-   with row i and column i, i = 1, ..., N, removed
+   but checks whether all \eqn{N}
+   \eqn{(N-1) \times (N-1)}{(N-1)x(N-1)} submatrices
+   with row \eqn{i} and column \eqn{i}, \eqn{i = 1, ..., N}, removed
    are positive semidefinite.
    If necessary, this procedure is done recursively.
 
@@ -84,7 +107,7 @@ semidefiniteness( m, positive = TRUE,
 
 \value{
    \code{isSemidefinite()} and \code{semidefiniteness()}
-   return a locigal value
+   return a locigal value (if argument \code{m} is a matrix)
    or a logical vector (if argument \code{m} is a list)
    indicating whether the matrix (or each of the matrices)
    is positive/negative (depending on argument \code{positive})
@@ -117,6 +140,11 @@ semidefiniteness( m, positive = TRUE,
    # a matrix that is neither positive nor negative semidefinite
    isSemidefinite( symMatrix( 1:6 ) )
    isSemidefinite( symMatrix( 1:6 ), positive = FALSE )
+   
+   # checking a list of matrices
+   ml <- list( matrix( 1, 3, 3 ), matrix(-1, 3, 3 ), matrix( 0, 3, 3 ) )
+   isSemidefinite( ml )
+   isSemidefinite( ml, positive = FALSE )
 }
 
 \keyword{array}

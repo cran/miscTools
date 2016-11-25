@@ -27,15 +27,16 @@ Type 'q()' to quit R.
 [2,] -0.2301775 0.12928774 -1.2650612
 [3,]  1.5587083 1.71506499 -0.6868529
 > try( semidefiniteness( m1 ) )
-Error in semidefiniteness(m1) : argument 'm' must be a symmetric matrix
+Error in isSemidefinite.matrix(m = m, ...) : 
+  argument 'm' must be a symmetric matrix
 > try( semidefiniteness( m1, method = "eigen" ) )
-Error in semidefiniteness(m1, method = "eigen") : 
+Error in isSemidefinite.matrix(m = m, ...) : 
   argument 'm' must be a symmetric matrix
 > try( semidefiniteness( m1, positive = FALSE ) )
-Error in semidefiniteness(m1, positive = FALSE) : 
+Error in isSemidefinite.matrix(m = m, ...) : 
   argument 'm' must be a symmetric matrix
 > try( semidefiniteness( m1, positive = FALSE, method = "eigen" ) )
-Error in semidefiniteness(m1, positive = FALSE, method = "eigen") : 
+Error in isSemidefinite.matrix(m = m, ...) : 
   argument 'm' must be a symmetric matrix
 > 
 > # positive semidefinite
@@ -248,6 +249,48 @@ Error in semidefiniteness(m1, positive = FALSE, method = "eigen") :
 > semidefiniteness( m13, positive = FALSE, method = "eigen" )
 [1] FALSE
 > 
+> # 'large' matrix
+> m14 <- symMatrix( 1:( 13 * (13+1) / 2 ) )
+> semidefiniteness( m14 )
+[1] FALSE
+> semidefiniteness( m14, method = "det" )
+Warning in isSemidefinite.matrix(m = m, ...) :
+  using method 'det' can take a very long time for matrices with more than 12 rows and columns; it is suggested to use method 'eigen' for larger matrices
+[1] FALSE
+> semidefiniteness( m14, method = "eigen" )
+[1] FALSE
+> 
+> # list, one element not a matrix
+> ml1 <- list( m2, c( m1 ), m3, m4 )
+> try( semidefiniteness( ml1 ) )
+Error in isSemidefinite.list(m = m, ...) : 
+  all components of the list specified by argument 'm' must be matrices
+> 
+> # list of matrices, one non-symmetric
+> ml2 <- list( m2, m1, m3, m4 )
+> try( semidefiniteness( ml2 ) )
+Error in isSemidefinite.matrix(m[[t]], ...) : 
+  argument 'm' must be a symmetric matrix
+> 
+> # list of matrices, one 'large' matrix
+> ml3 <- list( m2, m14, m3, m4 )
+> semidefiniteness( ml3 )
+[1]  TRUE FALSE  TRUE  TRUE
+> semidefiniteness( ml3, method = "det" )
+Warning in isSemidefinite.matrix(m[[t]], ...) :
+  using method 'det' can take a very long time for matrices with more than 12 rows and columns; it is suggested to use method 'eigen' for larger matrices
+[1]  TRUE FALSE  TRUE  TRUE
+> semidefiniteness( ml3, method = "eigen" )
+[1]  TRUE FALSE  TRUE  TRUE
+> semidefiniteness( ml3, positive = FALSE )
+[1] FALSE FALSE FALSE FALSE
+> semidefiniteness( ml3, positive = FALSE, method = "det" )
+Warning in isSemidefinite.matrix(m[[t]], ...) :
+  using method 'det' can take a very long time for matrices with more than 12 rows and columns; it is suggested to use method 'eigen' for larger matrices
+[1] FALSE FALSE FALSE FALSE
+> semidefiniteness( ml3, positive = FALSE, method = "eigen" )
+[1] FALSE FALSE FALSE FALSE
+> 
 > proc.time()
    user  system elapsed 
-  0.152   0.020   0.168 
+  0.268   0.020   0.312 

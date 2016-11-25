@@ -1,6 +1,6 @@
-9060fe38714553010dff614bbd21c9a8 *DESCRIPTION
-759bed0be18ab757ffc1275a26a3f981 *NAMESPACE
-4f12ff3422a172958dce05930df05c4f *NEWS
+6ed1597eb03dc6fac7e10c15b195240d *DESCRIPTION
+b1fb1c198bfbd44fccdf835b93cdb7a0 *NAMESPACE
+3218f44259d14dddd8d39dc969836785 *NEWS
 e3babd76fec6b1c5ab4604f68d45ef1c *R/checkNames.R
 252d30d0a896bd1b9f0bf942c72181b5 *R/coefTable.R
 d50ca2328c07306b8f5c35e22911ffc7 *R/colMedians.R
@@ -10,7 +10,7 @@ c5f0c9986689896bbb089720ff5d12a1 *R/logDataSet.R
 5c6bf1348fbafd09c133c6837bda7d7f *R/margEff.R
 486e412f9aed7a22cf4af6a2fb0d8efb *R/nObs.R
 959fd81d0615a9e57c21035e51368c80 *R/nParam.R
-e34769fb140a6cdd1ab12a3c927dd33b *R/semidef.R
+416cfea872584e41aae714b507b0b33a *R/semidef.R
 0ffc45f50a2545ebd525b6d23e66ec56 *R/stdEr.R
 b3885cebbf5692eb72ec9c281abe08ae *R/sumKeepAttr.R
 beaed4a5fa7d5a6a78edf8a0313c273f *R/utils.R
@@ -27,7 +27,7 @@ c01313e697ec6d374c55ba69cc1c4ef5 *man/nParam.Rd
 fe933136168a3f27476ca13f64b86413 *man/quasiconcavity.Rd
 02f6f6e809b64e9c1415765ad83d95b0 *man/rSquared.Rd
 f786c67daf28b8336a4a73c791f20817 *man/rowMedians.Rd
-2ae744cb8eb451916fb4ba9642215f45 *man/semidefiniteness.Rd
+39cbd1282fd0e82222c129d3ed157016 *man/semidefiniteness.Rd
 c593269b216697ea39ef815876c5f2d9 *man/stdEr.Rd
 9ad446f2d2b4b0230823b556445838f2 *man/sumKeepAttr.Rd
 e44711f81ae1a2874851ee957e13fbe9 *man/symMatrix.Rd
@@ -45,8 +45,8 @@ a1c518e2a5fdb4218ffb69753a15771a *man/veclipos.Rd
 dc20fe1046d7df901b9fcb47a0b174ba *tests/lmMethods.Rout.save
 608d7c2980b50689700ca4f0d3a37e3f *tests/margEffTest.R
 4eb1827f427348a5b2dd142e11bbee3d *tests/margEffTest.Rout.save
-d384b95de79ebfdf3729ee9061ab9305 *tests/semidefTest.R
-ff0cc12c1bf069ed8dce8e3232906235 *tests/semidefTest.Rout.save
+70bb62558d457fc8f84f1284c287b6ca *tests/semidefTest.R
+42f4fbf04634d1f366f71911b1250b11 *tests/semidefTest.Rout.save
 ef7f6aa53cc92f2159389c2721cbd399 *tests/stdErTests.R
 369cac7937ee7257465691b89ffedbbe *tests/stdErTests.Rout.save
 3383c0c8b0b4191bddfb7f1d4f59e9e1 *tests/sumKeepAttrTest.R
