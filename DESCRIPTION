@@ -1,10 +1,11 @@
 Package: miscTools
-Version: 0.6-22
-Date: 2016-11-25
+Version: 0.6-24
+Date: 2019-10-11
 Title: Miscellaneous Tools and Utilities
 Author: Arne Henningsen, Ott Toomet
 Maintainer: Arne Henningsen <arne.henningsen@gmail.com>
 Depends: R (>= 2.14.0)
+Imports: digest
 Suggests: Ecdat (>= 0.1-5)
 Description: Miscellaneous small tools and utilities.
    Many of them facilitate the work with matrices,
@@ -17,6 +18,6 @@ Description: Miscellaneous small tools and utilities.
 License: GPL (>= 2)
 URL: http://www.micEcon.org
 NeedsCompilation: no
-Packaged: 2016-11-25 07:44:12 UTC; arne
+Packaged: 2019-10-11 07:23:31 UTC; gsl324
 Repository: CRAN
-Date/Publication: 2016-11-25 14:14:33
+Date/Publication: 2019-10-11 07:50:02 UTC
