@@ -1,6 +1,6 @@
-c5de60cdbb2dc2f1c0c846fa2c117cfa *DESCRIPTION
+8176fb0829a42968ae41b22570ff949a *DESCRIPTION
 894269651437d2bb812740641543c814 *NAMESPACE
-717eefc1ee22dbb6c76f784d8b0490b3 *NEWS
+d97951b629891958465272899b96513b *NEWS
 e3babd76fec6b1c5ab4604f68d45ef1c *R/checkNames.R
 252d30d0a896bd1b9f0bf942c72181b5 *R/coefTable.R
 d50ca2328c07306b8f5c35e22911ffc7 *R/colMedians.R
@@ -13,7 +13,7 @@ fbc8147e79f22b1e16543a8b02df41d6 *R/ddnorm.R
 0ffc45f50a2545ebd525b6d23e66ec56 *R/stdEr.R
 b3885cebbf5692eb72ec9c281abe08ae *R/sumKeepAttr.R
 c3a6c3835ddc5a30e97d43be7ed1612a *R/summarizeDF.R
-beaed4a5fa7d5a6a78edf8a0313c273f *R/utils.R
+ef1a8659c7282dc1f0e1f652eddefdb3 *R/utils.R
 7ad229468f5cedbfbe3f849bfe6c5ead *man/coefTable.Rd
 47e3a3a8db4cfd543ca55cd6b4d6f572 *man/colMedians.Rd
 b22d0e29109dc4e507b57323bd9ccef0 *man/compPlot.Rd
