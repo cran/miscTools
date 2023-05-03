@@ -25,7 +25,7 @@ nObs(x, \dots)
   numeric, number of observations
 }
 \author{Ott Toomet, \email{otoomet@econ.au.dk}}
-\seealso{\code{\link[maxLik]{nParam}}}
+
 \examples{
 # Construct a simple OLS regression:
 x1 <- runif(100)

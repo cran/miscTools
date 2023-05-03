@@ -1,6 +1,6 @@
 Package: miscTools
-Version: 0.6-26
-Date: 2019-12-08
+Version: 0.6-28
+Date: 2023-05-03
 Title: Miscellaneous Tools and Utilities
 Author: Arne Henningsen, Ott Toomet
 Maintainer: Arne Henningsen <arne.henningsen@gmail.com>
@@ -16,8 +16,9 @@ Description: Miscellaneous small tools and utilities.
    obtaining the number of (estimated) parameters,
    or calculating R-squared values.
 License: GPL (>= 2)
-URL: http://www.micEcon.org
+URL: https://github.com/arne-henningsen/miscTools
+BugReports: https://github.com/arne-henningsen/miscTools/issues
 NeedsCompilation: no
-Packaged: 2019-12-08 08:37:45 UTC; gsl324
+Packaged: 2023-05-03 14:01:50 UTC; gsl324
 Repository: CRAN
-Date/Publication: 2019-12-08 09:10:03 UTC
+Date/Publication: 2023-05-03 14:40:02 UTC
