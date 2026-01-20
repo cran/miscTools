@@ -1,6 +1,6 @@
-9922e646e3ae4d66a5a9b3569da015d7 *DESCRIPTION
+81e695de2c36a72e3f6df57fda507746 *DESCRIPTION
 8aea333dc6ccff0a616b94790d697be4 *NAMESPACE
-c5b62e86d31bf5bd6684b4036d196fc0 *NEWS
+31e0df8558cbfa176c0dcafcbfe28d03 *NEWS
 e3babd76fec6b1c5ab4604f68d45ef1c *R/checkNames.R
 252d30d0a896bd1b9f0bf942c72181b5 *R/coefTable.R
 d50ca2328c07306b8f5c35e22911ffc7 *R/colMedians.R
@@ -31,7 +31,7 @@ fe933136168a3f27476ca13f64b86413 *man/quasiconcavity.Rd
 f786c67daf28b8336a4a73c791f20817 *man/rowMedians.Rd
 90ac1cf8002cf4810aa8f6f39d3c3cc4 *man/semidefiniteness.Rd
 c593269b216697ea39ef815876c5f2d9 *man/stdEr.Rd
-9ad446f2d2b4b0230823b556445838f2 *man/sumKeepAttr.Rd
+a82b3cede479bcf826f4b05558703ee1 *man/sumKeepAttr.Rd
 e7fd8cb44e4ef27ce06b6a539848c315 *man/summarizeDF.Rd
 e44711f81ae1a2874851ee957e13fbe9 *man/symMatrix.Rd
 de238aefc895618febb71c33afce934a *man/triang.Rd

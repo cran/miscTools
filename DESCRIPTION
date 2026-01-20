@@ -1,8 +1,13 @@
 Package: miscTools
-Version: 0.6-28
-Date: 2023-05-03
+Version: 0.6-30
+Date: 2026-01-19
 Title: Miscellaneous Tools and Utilities
-Author: Arne Henningsen, Ott Toomet
+Authors@R: c(
+  person( given = "Arne", family = "Henningsen", role = c( "aut", "cre" ),
+    email = "arne.henningsen@gmail.com" ),
+  person( given = "Ott", family = "Toomet", role = "aut" ) )
+Author: Arne Henningsen [aut, cre],
+  Ott Toomet [aut]
 Maintainer: Arne Henningsen <arne.henningsen@gmail.com>
 Depends: R (>= 2.14.0)
 Imports: digest
@@ -19,6 +24,6 @@ License: GPL (>= 2)
 URL: https://github.com/arne-henningsen/miscTools
 BugReports: https://github.com/arne-henningsen/miscTools/issues
 NeedsCompilation: no
-Packaged: 2023-05-03 14:01:50 UTC; gsl324
+Packaged: 2026-01-19 13:56:45 UTC; gsl324
 Repository: CRAN
-Date/Publication: 2023-05-03 14:40:02 UTC
+Date/Publication: 2026-01-20 06:10:14 UTC

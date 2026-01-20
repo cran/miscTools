@@ -5,6 +5,11 @@ A full ChangeLog is available in the log messages of the Git repository
 at GitHub: https://github.com/arne-henningsen/miscTools/commits/main
 
 
+            CHANGES IN VERSION 0.6-30  (2026-01-19)
+
+* a few minor improvements in the documentation
+
+
             CHANGES IN VERSION 0.6-28  (2023-05-03)
 
 * added function histDens()            
